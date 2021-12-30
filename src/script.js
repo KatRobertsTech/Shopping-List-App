@@ -22,9 +22,11 @@ function viewShoppingList() {
     }
 }
 
-function newCategory() {
-    
+function promptMe() {
+    prompt('What would you like to do?\n\n"new" - Add a new category\n"buy" - Add a new item to the list\n"list" - List full shopping list\n"delete" - remove a category or an item from the shopping list');
 }
+
+
 
 let input = (prompt("What would you like to do?"));
 while (input !== 'quit') {
@@ -34,7 +36,7 @@ while (input !== 'quit') {
         viewShoppingList();
     }
     else if (input === 'new') {
-        const newCategory = prompt('Please write a new shopping list category here!')
+        const newCategory = prompt('Please write a new shopping list category here!');
         shoppingList[newCategory] = [];
         console.log(`\n${newCategory.toUpperCase()} category was added to the shopping list.`);
         const yesNo = prompt(`Would you like add an item into ${newCategory.toUpperCase()} category?\n\nYES / NO?`);
@@ -50,7 +52,12 @@ while (input !== 'quit') {
         if (shoppingList.hasOwnProperty(categoryChoice)) {
             shoppingList[categoryChoice].push(itemToBuy);
             console.log(`Thank you, ${itemToBuy.toUpperCase()} was added to ${categoryChoice}!`);
-        } else if (input === 'add category'){}
+        } else if (categoryChoice === 'add category'){
+            const newCategory = prompt('Please write a new shopping list category here!');
+            shoppingList[newCategory] = [];
+            shoppingList[newCategory].push(itemToBuy);
+            console.log(`Thank you ${itemToBuy} was added to a brand new category ${newCategory}.`)
+        }
     }
     else if (input === 'delete') {
         console.log('Please choose an item / category to delete from the current shopping list below.');
