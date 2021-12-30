@@ -1,3 +1,8 @@
+// new - Add new category
+// buy - Add new item to the list
+//list - List full shopping list
+// delete - remove a category or aan item from the shopping list
+
 let shoppingList = {
     "fruit": ["oranges", "apples"],
     "vegetables": ["carrots", "parsnips", "spinach"],
@@ -15,6 +20,10 @@ function viewShoppingList() {
             console.log(`    ${j} - ${categoriesListed[j]}`);
         }
     }
+}
+
+function newCategory() {
+    
 }
 
 let input = (prompt("What would you like to do?"));
@@ -37,11 +46,11 @@ while (input !== 'quit') {
     }
     else if (input === 'buy') {
         const itemToBuy = prompt('Which item would you like to add into the shopping list?');
-        const categoryChoice = prompt(`Please choose a ${'category'.toUpperCase()} that you would like to add ${itemToBuy.toUpperCase()} into.\n\n${categories}`)
+        const categoryChoice = prompt(`Please choose a ${'category'.toUpperCase()} that you would like to add ${itemToBuy.toUpperCase()} into.\n\n${categories}\n\nOr write ${'add category'.toUpperCase()} to add a new category first.`)
         if (shoppingList.hasOwnProperty(categoryChoice)) {
             shoppingList[categoryChoice].push(itemToBuy);
             console.log(`Thank you, ${itemToBuy.toUpperCase()} was added to ${categoryChoice}!`);
-        }
+        } else if (input === 'add category'){}
     }
     else if (input === 'delete') {
         console.log('Please choose an item / category to delete from the current shopping list below.');
@@ -52,12 +61,33 @@ while (input !== 'quit') {
             delete shoppingList[deleteChoice];
             console.log(`\n\nThank you, ${deleteChoice.toUpperCase()} was removed from the shopping list!`)
         } else {
-            for (let i = 0; i < Object.keys(shoppingList).length; i++) {
-                if (Object.keys(shoppingList)[i] === deleteChoice) {
-                    console.log(`Right choice, ${deleteChoice} will be deleted from the shopping list.`);
-                } else {console.log('Wrong choice');}
+            for (let i = 0; i < categories.length; i++) {
+                for (let j = 0; j < categories[i].length; j++) {
+                    if (deleteChoice === shoppingList[categories[i]][j]) {
+                        console.log(`${categories[i]} category contains ${deleteChoice}. We will delete ${deleteChoice} from the shopping list.`)
+                        shoppingList[categories[i]].splice(j, 1);
+                    }
+                }
             }
-        } 
+        }
+        
+
+
+
+
+
+        
+
+
+        
+
+        // else {
+        //     for (let i = 0; i < Object.keys(shoppingList).length; i++) {
+        //         if (Object.keys(shoppingList)[i] === deleteChoice) {
+        //             console.log(`Right choice, ${deleteChoice} will be deleted from the shopping list.`);
+        //         } else {console.log('Wrong choice');}
+        //     }
+        // } 
 
         
         // else if (categories.includes(deleteChoice)) {
