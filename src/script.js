@@ -46,7 +46,7 @@ while (input !== 'quit') {
     else if (input === 'delete') {
         console.log('Please choose an item / category to delete from the current shopping list below.');
         viewShoppingList();
-        const deleteChoice = prompt(`What would you like to delete?\n\n${categories}\n\n${'Please note that deleting a category will delete all items inside this category as well'.toUpperCase()}!`);
+        const deleteChoice = prompt(`What would you like to delete?\n\n${'Please note that deleting a category will delete all items inside this category as well'.toUpperCase()}!`);
         deleteChoice.toLowerCase();
         if (shoppingList.hasOwnProperty(deleteChoice)) {
             delete shoppingList[deleteChoice];
@@ -54,7 +54,7 @@ while (input !== 'quit') {
         } else {
             for (let i = 0; i < Object.keys(shoppingList).length; i++) {
                 if (Object.keys(shoppingList)[i] === deleteChoice) {
-                    console.log('Right choice');
+                    console.log(`Right choice, ${deleteChoice} will be deleted from the shopping list.`);
                 } else {console.log('Wrong choice');}
             }
         } 
