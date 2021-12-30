@@ -23,12 +23,12 @@ function viewShoppingList() {
 }
 
 function promptMe() {
-    prompt('What would you like to do?\n\n"new" - Add a new category\n"buy" - Add a new item to the list\n"list" - List full shopping list\n"delete" - remove a category or an item from the shopping list');
-}
+    return prompt('What would you like to do?\n\n"new" - Add a new category\n"buy" - Add a new item to the list\n"list" - List full shopping list\n"delete" - remove a category or an item from the shopping list');
+};
 
 
 
-let input = (prompt("What would you like to do?"));
+let input = promptMe();
 while (input !== 'quit') {
     let categories = Object.getOwnPropertyNames(shoppingList);
     if (input === 'list') {
@@ -107,7 +107,7 @@ while (input !== 'quit') {
         // }
     }
 
-    input = (prompt("What would you like to do?"));
+    input = promptMe();
 } 
 console.log('\nYou quit the app!');
 
